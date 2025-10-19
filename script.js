@@ -130,7 +130,10 @@ loginButton.addEventListener('click', function() {
     const user = users.find(user => user.username === username && user.password === password);
 
     if (user) {
-        alert('Login successful!');
+        // Store user data in session storage
+        sessionStorage.setItem('currentUser', JSON.stringify(user));
+        // Redirect to dashboard on successful login
+        window.location.href = 'dashboard.html';
         loginForm.reset();
     } else {
         alert('Invalid username or password.');
